@@ -5,7 +5,7 @@ FROM node:14-alpine
 WORKDIR /app
 
 # Copiez le package.json et le package-lock.json dans le conteneur
-COPY package*.json ./
+COPY package.json ./
 
 # Installez les dépendances
 RUN npm install
@@ -20,4 +20,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Démarrez l'application Next.js
-CMD ["npm", "start"]
+CMD ["npm","run", "start"]

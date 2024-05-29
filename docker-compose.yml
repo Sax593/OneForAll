@@ -14,4 +14,4 @@ services:
       - 3000:3000
     volumes:
       - ./client/app:/client/app
-    command: npm run start
+    command: npm run dev

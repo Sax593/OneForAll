@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Exposez le port sur lequel votre application écoute
-EXPOSE 4000
+EXPOSE 5000
 
 # Démarrez votre application lorsque le conteneur est lancé
 CMD [ "npm","run", "start" ]

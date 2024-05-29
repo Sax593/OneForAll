@@ -1,17 +1,17 @@
-version: "3"
+version: "0.1"
 services:
   server:
-    image: <image_du_serveur>
+    build: ./server
     ports:
       - 4000:4000
     volumes:
-      - <chemin_vers_code_du_serveur>:/app
-    command: <commande_de_demarrage_du_serveur>
+      - ./server/app:/servcer/app
+    command: npm run dev
 
   client:
-    image: <image_du_client>
+    build: ./client
     ports:
       - 3000:3000
     volumes:
-      - <chemin_vers_code_du_client>:/app
+      - ./client/app:/client/app
     command: npm run start

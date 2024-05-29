@@ -6,13 +6,14 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --light-blue: 0, 219, 238;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 11, 23, 47;
+    --background-end-rgb: 11, 23, 47;
   }
 }
 
@@ -26,8 +27,9 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.background {
+  background-image: url("../../../public/Background.png");
+  background-size: cover; /* Pour couvrir toute la zone */
+  background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+  background-position: center; /* Pour centrer l'image */
 }

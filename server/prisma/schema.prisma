@@ -1,14 +1,88 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  idUser  Int @id @default(autoincrement())
+  first_name  String?
+  last_name String?
+  date_of_birth DateTime
+  sex String?
+  roles String?
+  admin Admin[]
+  aspirant Aspirant[]
+  mentor Mentor[]
+}
+
+model Admin {
+  idAdmin Int @id @default(autoincrement())
+  role String?
+  user User @relation(fields: [idUser], references: [idUser])
+  idUser Int
+  identification Identification?
+}
+
+model Aspirant {
+  idAspirant Int @id @default(autoincrement())
+  level String?
+  type String?
+  user User @relation(fields: [idUser], references: [idUser])
+  idUser Int
+  session Session?
+  indentification Identification?
+}
+
+model Mentor {
+  idMentor Int @id @default(autoincrement())
+  level String
+  roles String
+  type String
+  user User @relation(fields: [idUser], references: [idUser])
+  idUser Int
+  session Session?
+  identification Identification?
+}
+
+model Game {
+  idGame Int @id @default(autoincrement())
+  name String
+  kind String
+  session Session?
+}
+
+model Session {
+  idSession Int @id @default(autoincrement())
+  name String
+  type_training String
+  combined_datetime DateTime
+  aspirant Aspirant? @relation(fields: [idAspirant], references: [idAspirant])
+  mentor Mentor? @relation(fields: [idMentor], references: [idMentor])
+  game Game? @relation(fields: [idGame], references: [idGame])
+  idAspirant Int @unique
+  idMentor Int @unique
+  idGame Int @unique
+}
+
+model FeedBack {
+  idFeedBack Int @id @default(autoincrement())
+  comment String?
+  idSession Int
+}
+
+model Identification {
+  idIdentification Int @id @default(autoincrement())
+  email String @unique
+  password String
+  aspirant Aspirant? @relation(fields: [idAspirant], references: [idAspirant])
+  mentor Mentor? @relation(fields: [idMentor], references: [idMentor])
+  admin Admin? @relation(fields: [idAdmin], references: [idAdmin])
+  idAspirant Int? @unique
+  idMentor Int? @unique
+  idAdmin Int? @unique
 }

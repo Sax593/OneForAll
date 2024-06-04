@@ -1,11 +1,13 @@
+import "./navbar.css";
+
 export default function Nav() {
   return (
-    <nav className="flex flex-row place-content-center w-4/5 h-8">
-      <section>
+    <nav className="navbar_background">
+      <section className="navbar_logo">
         <h1>One For All</h1>
       </section>
-      <section>
-        <ul className="flex flex-row">
+      <section className="navbar_list_section">
+        <ul className="navbar_list">
           <li>
             <a href="/">Home</a>
           </li>

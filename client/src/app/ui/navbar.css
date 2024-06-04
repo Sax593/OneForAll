@@ -1,0 +1,26 @@
+.navbar_background {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 50vw;
+}
+
+.navbar_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 40vw;
+  background-color: #0b172f;
+}
+
+.navbar_logo {
+  padding: 1.5rem 1rem;
+  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  background-color: #0b172f;
+}
+
+.navbar_list_section {
+  padding: 0.5rem 2rem;
+  background-color: #0b172f;
+}

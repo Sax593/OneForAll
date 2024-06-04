@@ -28,8 +28,26 @@ body {
 }
 
 .background {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-image: url("../../../public/Background.png");
   background-size: cover; /* Pour couvrir toute la zone */
   background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
   background-position: center; /* Pour centrer l'image */
+  height: 75vh;
+}
+
+.nav_pisition {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.middle_transition_bar {
+  height: 6rem;
+  width: 100vw;
+  background-color: #0b172f;
+  clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
 }

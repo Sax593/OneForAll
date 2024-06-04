@@ -2,9 +2,12 @@ import Nav from "./ui/nav";
 
 export default function Home() {
   return (
-    <main className="background">
-      <section className="flex justify-center mt-5">
-        <Nav />
+    <main>
+      <section className="background">
+        <section className="nav_pisition">
+          <Nav />
+        </section>
+        <section className="middle_transition_bar">TEst</section>
       </section>
     </main>
   );

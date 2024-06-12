@@ -18,6 +18,7 @@ model User {
   admin Admin[]
   aspirant Aspirant[]
   mentor Mentor[]
+  user_auth user_auth[]
 }
 
 model Admin {
@@ -25,7 +26,6 @@ model Admin {
   role String?
   user User @relation(fields: [idUser], references: [idUser])
   idUser Int
-  identification Identification?
 }
 
 model Aspirant {
@@ -35,7 +35,6 @@ model Aspirant {
   user User @relation(fields: [idUser], references: [idUser])
   idUser Int
   session Session?
-  indentification Identification?
 }
 
 model Mentor {
@@ -46,7 +45,6 @@ model Mentor {
   user User @relation(fields: [idUser], references: [idUser])
   idUser Int
   session Session?
-  identification Identification?
 }
 
 model Game {
@@ -75,14 +73,10 @@ model FeedBack {
   idSession Int
 }
 
-model Identification {
+model user_auth {
   idIdentification Int @id @default(autoincrement())
   email String @unique
   password String
-  aspirant Aspirant? @relation(fields: [idAspirant], references: [idAspirant])
-  mentor Mentor? @relation(fields: [idMentor], references: [idMentor])
-  admin Admin? @relation(fields: [idAdmin], references: [idAdmin])
-  idAspirant Int? @unique
-  idMentor Int? @unique
-  idAdmin Int? @unique
+  user User @relation(fields: [user_id], references: [idUser])
+  user_id Int
 }

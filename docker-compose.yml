@@ -15,3 +15,11 @@ services:
     volumes:
       - ./client/app:/client/app
     command: npm run dev
+
+  chat:
+    build: ./chat-server
+    ports:
+      - 8080:8080
+    volumes:
+      - ./chat/app:/chat/app
+    command: npm run build

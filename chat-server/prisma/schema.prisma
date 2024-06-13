@@ -1,0 +1,36 @@
+// backend/prisma/schema.prisma
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+ provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  idUser  Int @id @default(autoincrement())
+  first_name  String?
+  last_name String?
+  date_of_birth DateTime
+  sex String?
+  roles String?
+  conversation Conversation[]
+}
+
+model Conversation{
+  idConversation Int @id @default(autoincrement())
+  idUser Int
+  idMessage Int
+  user User @relation(fields: [idUser], references: [idUser])
+  message Message @relation(fields: [idMessage], references: [idMessage])
+}
+
+model Message {
+  idMessage Int      @id @default(autoincrement())
+  content   String
+  sender    String
+  createdAt DateTime @default(now())
+  conversation Conversation[]
+}
